@@ -1,0 +1,205 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          {{ if .Site.Params.email }}
+          <li>
+            <a href="mailto:{{ .Site.Params.email }}" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.facebook }}
+          <li>
+            <a href="https://www.facebook.com/{{ .Site.Params.facebook }}" title="Facebook">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.googleplus }}
+          <li>
+            <a href="https://www.plus.google.com/{{ .Site.Params.googleplus }}" title="Google+">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.github }}
+          <li>
+            <a href="https://github.com/{{ .Site.Params.github }}" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+		      {{ if .Site.Params.twitter }}
+          <li>
+            <a href="https://twitter.com/{{ .Site.Params.twitter }}" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.reddit }}
+          <li>
+            <a href="https://reddit.com/u/{{ .Site.Params.reddit }}" title="Reddit">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-reddit-alien fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+		      {{ if .Site.Params.linkedin }}
+          <li>
+            <a href="https://linkedin.com/in/{{ .Site.Params.linkedin }}" title="LinkedIn">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.xing }}
+          <li>
+            <a href="https://www.xing.com/profile/{{ .Site.Params.xing }}" title="Xing">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-xing fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+	    	  {{ if .Site.Params.stackoverflow }}
+          <li>
+            <a href="https://stackoverflow.com/{{ .Site.Params.stackoverflow }}" title="StackOverflow">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.snapchat }}
+          <li>
+            <a href="https://www.snapchat.com/add/{{ .Site.Params.snapchat }}" title="Snapchat">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-snapchat-ghost fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.instagram }}
+          <li>
+            <a href="https://www.instagram.com/{{ .Site.Params.instagram }}" title="Instagram">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.youtube }}
+          <li>
+            <a href="https://www.youtube.com/{{ .Site.Params.youtube }}" title="Youtube">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.soundcloud }}
+          <li>
+            <a href="https://soundcloud.com/{{ .Site.Params.soundcloud }}" title="SoundCloud">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-soundcloud fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.spotify }}
+          <li>
+            <a href="https://open.spotify.com/user/{{ .Site.Params.spotify }}" title="Spotify">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-spotify fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.bandcamp }}
+          <li>
+            <a href="https://{{ .Site.Params.bandcamp }}.bandcamp.com/" title="Bandcamp">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-bandcamp fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+          {{ if .Site.Params.itchio }}
+          <li>
+            <a href="https://itch.io/profile/{{ .Site.Params.itchio }}" title="Itch.io">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-gamepad fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
+
+    		  <li>
+      			<a href="{{ .Site.BaseURL}}index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  {{ .Site.Params.author }}
+    	  &nbsp;&bull;&nbsp;
+    	  {{ .Site.LastChange.Format "2006" }}
+
+    	  {{ if .Site.Title }}
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+    	  {{ end }}
+  	    </p>
+  	    <!-- Please don't remove this, keep my open source work credited :) -->
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v{{ .Hugo.Version }}</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          {{ with .Site.Params.commit }}&nbsp;&bull;&nbsp;[<a href="{{.}}{{ getenv "GIT_COMMIT_SHA" }}">{{ getenv "GIT_COMMIT_SHA_SHORT" }}</a>]{{ end }}
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="{{ .Site.BaseURL }}/js/main.js"></script>
+<script src="{{ .Site.BaseURL }}/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+{{ template "_internal/google_analytics.html" . }}
