@@ -1,7 +1,6 @@
 +++
 title = "About Me"
 date = "2017-03-01T10:54:24+02:00"
-layout = "page"
 +++
 My name is Nolan Price, and I am a programmer. No idea what the current P.C. word
 for a programmer is (Developer? Software Engineer? Code Jedi?) but I write programs

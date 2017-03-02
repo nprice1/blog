@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Come Up With a Title"
-baseURL = "http://nolanprice.com/"
+baseURL = "http://localhost:8080"
 theme = "beautifulhugo"
 paginate = 5
 copyright = "Copyright (c) 2017 - 2017, Nolan Price; all rights reserved."
@@ -27,5 +27,5 @@ disqusShortname = "nolan-blog"
 
   [[menu.main]]
       name = "About"
-      url = "/page/about/"
+      url = "/page/about"
       weight = 2
