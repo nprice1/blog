@@ -67,7 +67,7 @@ gave you.
 
 That's it!
 
-## Step four: Setup a custom email. Optional, but awesome (#step-four)
+## Step four: Setup a custom email. Optional, but awesome {#step-four}
 
 Now it's time to make a custom email on your domain so you look all professional and stuff.
 Again I decided to use [Namecheap](https://www.namecheap.com/hosting/email.aspx) for this service.
