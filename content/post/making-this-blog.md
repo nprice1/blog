@@ -38,7 +38,7 @@ This depends on a couple of factors. I tried both, and I decided to use Amazon R
 *only* because I setup a private email with Namecheap (see [Step four](#step-four) below for how to do that)
 and since I was using S3 as my web server, for some reason Namecheap thought I was using a
 custom DNS (even though I wasn't) and none of my emails were being received. If you decide to
-not setup a custom email, then using the free Namecheap DNS works just fine. There are some otherwise
+not setup a custom email, then using the free Namecheap DNS works just fine. There are some other
 factors as well, like the fact that the Namecheap DNS is free, and it doesn't propagate changes
 as quickly as I would like. For a static website where you are probably only setting this stuff up
 once though, quick changes probably aren't super critical.

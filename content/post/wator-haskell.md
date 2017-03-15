@@ -80,7 +80,7 @@ getNum (x,y) = if (x == 0)
                   then y*wSize
                else y+wSize
 
--- Function that returns a CellState given a random number bewteen 0 and 2
+-- Function that returns a CellState given a random number between 0 and 2
 mkState :: Int -> CellState
 mkState x
           | (x == 0)  = Empty
@@ -310,7 +310,7 @@ getNum (x,y) = if (x == 0)
                   then y*wSize
                else y+wSize
 
--- Function that returns a CellState given a random number bewteen 0 and 2
+-- Function that returns a CellState given a random number between 0 and 2
 mkState :: Int -> CellState
 mkState x
           | (x == 0)  = Empty

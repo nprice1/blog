@@ -1,9 +1,9 @@
 +++
 bigimg = ""
-date = "2014-07-11T10:54:24+02:00"
+date = "2017-03-17T10:54:24+02:00"
 subtitle = "Building Your Own 3d Printer"
 title = "Build a Prusa i3"
-draft = true
+draft = false
 +++
 I never really got into working with electronics when I was younger. I always liked the idea of taking something
 apart and figuring out how it works, but it always ended up with a plastic bag of
