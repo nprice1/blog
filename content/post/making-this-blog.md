@@ -1,6 +1,6 @@
 +++
 date = "2017-03-01T10:54:24+02:00"
-title = "Using Namecheap, Amazon S3, Amazon S3, and Hugo"
+title = "Using Namecheap, Amazon S3, Amazon Route 53, and Hugo"
 subtitle = "How I made this blog"
 draft = false
 +++
