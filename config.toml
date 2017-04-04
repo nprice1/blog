@@ -19,6 +19,7 @@ disqusShortname = "nolan-blog"
     email = "nolan@nolanprice.com"
     github = "nprice1"
     linkedin = "nolan-price-3a630381"
+    kaggle = "nprice"
 
   [[menu.main]]
       name = "Blog"

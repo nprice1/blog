@@ -163,6 +163,16 @@
             </a>
           </li>
           {{ end }}
+          {{ if .Site.Params.kaggle }}
+          <li>
+            <a href="https://www.kaggle.com/{{ .Site.Params.kaggle }}" title="Kaggle">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-stack-1x fa-inverse">k</i>
+              </span>
+            </a>
+          </li>
+          {{ end }}
 
     		  <li>
       			<a href="{{ .Site.BaseURL}}index.xml" title="RSS">
