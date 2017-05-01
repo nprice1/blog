@@ -1,14 +1,14 @@
 +++
 title = "TypeScript/React/Redux Chat App Tutorial"
-date = "2017-04-25T10:54:24+02:00"
-draft = true
+date = "2017-05-01T10:54:24+02:00"
+draft = false
 +++
 Most of my experience is in writing backend code. I have always worked with (and love)
 typed languages. I am a big fan of verbose programming languages because most of the
-projects I've worked on have been large Enterprise projects. And when projects get large,
+projects I've worked on have been large Enterprise projects. When projects get large,
 using a scripting language gets hairy. However, scripting languages are also awesome, and I
-wanted to get more experience. I have written plenty of Javascript with jQuery, but that
-doesn't cut it anymore. So I decided to dip my toe into the wild work of Javascript.
+wanted to get more experience with them. I have written plenty of Javascript with jQuery, but that
+doesn't cut it anymore. So I decided to dip my toe into the wild work of Javascript frameworks.
 I decided to use TypeScript because I love my types, and I wanted to use React and Redux.
 This is a pretty long article, so feel free
 [to just skip straight to the source code on my github account](https://github.com/nprice1?tab=repositories).
@@ -28,15 +28,16 @@ mkdir src
 
 Here is what each of those commands is doing:
 
-1. `npm init`: This creates a package.json file in your project and asks various quesitons
+1. `npm init`: This creates a `package.json` file in your project and asks various questions
 about the project you are writing, like the package name and the current version.
+** MAKE SURE YOU USE THE NAME type-script-server OR THE IMPORTS IN OUR CLIENT WON'T WORK **
 2. `npm install --save-dev ...`: This installs all of the packages that come after it
 as dev dependencies. Since we aren't publishing this module, we are only using dev dependencies.
 3. `npm link`: This adds a symlink in the current project so that
 it can be used in other projects locally. We need this because our chat client project
 is going to be using some files from this server project. When we setup our client, we will
 be calling npm link again in order to setup the symlink so the chat client can use our server code.
-4. `mkdir src`: Makes a new src/ directory in your project where we will be adding our code.
+4. `mkdir src`: Makes a new `src/` directory in your project where we will be adding our code.
 
 Now we need to create a new `tsconfig.json` file in the directory that looks like this:
 
@@ -69,13 +70,13 @@ Now we can setup the client project:
 cd <YOUR CHAT CLIENT DIRECTORY>
 npm init
 npm install --save-dev ts-loader typescript webpack react react-dom redux react-redux webpack-dev-server ws @types/react @types/react-dom @types/react-redux @types/redux @types/ws
-npm link <THE NAME OF YOUR CHAT SERVER PROJECT (IN PACKAGE.JSON FILE)>
+npm link type-script-server
 mkdir src
 ```
 
 We also need a `tsconfig.json` file in this project that looks like this:
 
-```
+```json
 {
   "compilerOptions": {
     "outDir": "./build/",
@@ -198,6 +199,12 @@ with this:
 },
 ```
 
+The `"scripts"` field of the `package.json` file define executable scripts npm can run
+on your project. In the above snippet we defined two new scripts:
+
+1. `"build"`: This will build our server code into an executable Javascript file.
+2. `"start"`: This will run our server Javascript file using node.
+
 Now we can run `npm run build` to build our code, then we can run `npm start` to start
 our server. Try it out and make sure you see the 'Server is running on port 3000' message.
 
@@ -261,7 +268,7 @@ export const addUserAction = (username: string, socket: WebSocket): Action => ({
 
 In this file we declared our own `Action` type that will have type `ADD_MESSAGE`
 or `ADD_USER` as well as the fields we will need for executing those
-actions (the message, socket, and username). We also defined three functions that
+actions (the message, socket, and username). We also defined two functions that
 create our actions that will be used when we want to dispatch a given action to Redux.
 
 Now that we have our actions, we can make our reducers. Reducers are how Redux handles
@@ -448,7 +455,8 @@ isn't anything we are pulling out of the store. The `ConnectedDispatch` interfac
 will map any of our action creators to the props of our component. So in this case
 we are expecting to get an `addUser()` function that takes a username and a WebSocket.
 Finally, the `OwnState` interface defines what the component state will be that isn't
-pulled from our Redux store.
+pulled from our Redux store. This component will be keeping track of the current
+username and whether or not the sign in form has been submitted in its state.
 
 Now let's look at the two map functions:
 
@@ -466,7 +474,7 @@ These functions describe how we map the contents of the Redux store/dispatch fun
 to our component. The `mapStateToProps()` function will map any field in the Redux store
 into the given prop of our component. In this case we aren't pulling anything from the Redux
 store. The `mapDispatchToProps()` function maps functions that will dispatch Redux
-actions to props in our component. In this case, our component will get a `addUser` prop
+actions to props in our component. In this case, our component will get an `addUser` prop
 that is a function that will dispatch our `ADD_USER` action and update our Redux store
 using the `addUser` reducer.
 
@@ -527,7 +535,7 @@ of props pulled from Redux and the props for our component as our component prop
 the component state as our state. The rest is just our usual React component. To start
 we will render a simple login page, then after the user has entered their name and
 submitted the form we will show the actual app. The final line is how we actually
-connect out app to the Redux store, and we specify the mapping functions.
+connect our app to the Redux store, and we specify the mapping functions.
 
 Any component that needs to connect to the Redux store will look similar to this.
 The next component we will make is the ChatApp, which is also connected to the Redux
@@ -667,13 +675,13 @@ interface OwnState {
 export class Messages extends React.Component<OwnProps, OwnState> {
 
   componentDidUpdate() {
-    // get the UserMessagelist container and set the scrollTop to the height of the container
+    // get the message list container and set the scrollTop to the height of the container
     const objDiv = document.getElementById('messageList');
     objDiv.scrollTop = objDiv.scrollHeight;
   }
 
   render() {
-    // Loop through all the UserMessages in the state and create a UserMessage component
+    // Loop through all the messages in the state and create a Message component
     const messages = this.props.messages.map((message: MessageModel, i) => {
         return (
           <Message
@@ -694,7 +702,7 @@ export class Messages extends React.Component<OwnProps, OwnState> {
 ```
 
 This component handles rendering all of our messages and scrolling to the bottom
-of the list everytime a new message is added.
+of the list every time a new message is added.
 
 For our last component, create a new `Message.tsx` file that looks like this:
 
@@ -798,7 +806,7 @@ that needs it (any of our components that used the `connect()` function).
 ### Build and Render ###
 
 Alright now we have all of our code, we need to actually render our app. In order
-to do that, we will need an HTML page. In your project directory (not the `src/` directory,
+to do that, we will need an HTML page. In your project root directory (not the `src/` directory,
 the directory above it) make a new file called `index.html` that looks like this:
 
 ```html
@@ -814,8 +822,8 @@ the directory above it) make a new file called `index.html` that looks like this
 </html>
 ```
 
-This includes our built client Javascript (our webpack config has the output file set
-to be client.js) and includes a div on the page that React will replace with our app.
+This includes our built client Javascript (our Webpack config has the output file set
+to be `client.js`) and includes a div on the page that React will replace with our app.
 
 Now let's add a script in NPM that will start a little server that will serve up our
 client and also watch for any changes we make and deploy them. In the `package.json`
@@ -824,7 +832,7 @@ file, replace the `"scripts"` entry with this:
 ```
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1",
-  "watch": "webpack-dev-server --compress --history-api-fallback --progress --host 0.0.0.0 --port 3005",
+  "watch": "webpack-dev-server --compress --history-api-fallback --progress --host 0.0.0.0 --port 3005"
 },
 ```
 
@@ -834,7 +842,7 @@ Finally we get to actually run our app. Go to your server project directory and
 run `npm start`, this will start your server listening on port 3000. Now go to your
 client project directory and run `npm run watch`, this will start a server that will
 server your `index.html` page on port 3005 (it will also automatically update your
-client if you make any code changes). No go to http://localhost:3005 in your web
+client if you make any code changes). Now go to http://localhost:3005 in your web
 browser. You should see a very simple login page asking for your username. Enter
 your username and submit. You should see this:
 
