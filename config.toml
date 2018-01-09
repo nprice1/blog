@@ -4,7 +4,7 @@ baseURL = "http://nolanprice.com"
 theme = "beautifulhugo"
 paginate = 5
 copyright = "Copyright (c) 2017 - 2017, Nolan Price; all rights reserved."
-googleAnalytics = "UA-92866629-1"
+googleAnalytics = "UA-110938320-1"
 disqusShortname = "nolan-blog"
 
   # Theme variables
