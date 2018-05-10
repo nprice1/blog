@@ -20,6 +20,7 @@ disqusShortname = "nolan-blog"
     github = "nprice1"
     linkedin = "nolan-price-3a630381"
     kaggle = "nprice"
+    comments = true
 
   [[menu.main]]
       name = "Blog"
