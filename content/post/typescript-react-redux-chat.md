@@ -858,6 +858,5 @@ other tab. Now you can write some styles and make a good looking super simple ch
 
 ### Edit 05/10/2018 ###
 
-1. Updated the instructions to pull the server code as a package rather than using `npm link`. 
-2. Updated versions and made some fixes as pointed out by GitHub user [wildcart](https://github.com/wildcart) as 
+Updated versions and made some fixes as pointed out by GitHub user [wildcart](https://github.com/wildcart) as 
 seen in these [issues](https://github.com/nprice1/typeScriptChatClient/issues/2)
