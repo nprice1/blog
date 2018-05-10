@@ -30,7 +30,7 @@ Here is what each of those commands is doing:
 
 1. `npm init`: This creates a `package.json` file in your project and asks various questions
 about the project you are writing, like the package name and the current version.
-** MAKE SURE YOU USE THE NAME type-script-server OR THE IMPORTS IN OUR CLIENT WON'T WORK **
+**MAKE SURE YOU USE THE NAME type-script-server OR THE IMPORTS IN OUR CLIENT WON'T WORK**
 2. `npm install --save-dev ...`: This installs all of the packages that come after it
 as dev dependencies. Since we aren't publishing this module, we are only using dev dependencies.
 3. `npm link`: This adds a symlink in the current project so that
@@ -83,7 +83,7 @@ We also need a `tsconfig.json` file in this project that looks like this:
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
-    "target": "ES5",
+    "target": "ES6",
     "jsx": "react"
   },
   "include": [
@@ -354,14 +354,14 @@ import * as React from 'react';
 import * as redux from 'redux';
 import { connect } from 'react-redux';
 
-import { addUserAction } from '../actions';
+import { Action, addUserAction } from '../actions';
 import { ChatState } from '../state';
 
 import { ChatApp } from './ChatApp';
 
 const mapStateToProps = (state: ChatState, ownProps: OwnProps): ConnectedState => ({});
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<ChatState>): ConnectedDispatch => ({
+const mapDispatchToProps = (dispatch: redux.Dispatch<Action>): ConnectedDispatch => ({
   addUser: (username: string, socket: WebSocket) => {
     dispatch(addUserAction(username, socket));
   }
@@ -463,7 +463,7 @@ Now let's look at the two map functions:
 ```typescript
 const mapStateToProps = (state: ChatState, ownProps: OwnProps): ConnectedState => ({});
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<ChatState>): ConnectedDispatch => ({
+const mapDispatchToProps = (dispatch: redux.Dispatch<Action>): ConnectedDispatch => ({
   addUser: (username: string, socket: WebSocket) => {
     dispatch(addUserAction(username, socket));
   }
@@ -548,6 +548,7 @@ import { connect } from 'react-redux';
 
 import { Message as MessageModel, UserMessage } from 'type-script-server/src/models';
 import { ChatState } from '../state';
+import { Action } from '../actions';
 
 import { Messages } from './Messages';
 import { ChatInput } from './ChatInput';
@@ -556,7 +557,7 @@ const mapStateToProps = (state: ChatState, ownProps: OwnProps): ConnectedState =
   messages: state.messages
 });
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<ChatState>): ConnectedDispatch => ({});
+const mapDispatchToProps = (dispatch: redux.Dispatch<Action>): ConnectedDispatch => ({});
 
 interface OwnProps {
   socket: WebSocket,
@@ -854,3 +855,9 @@ joined the chat
 Now open a new tab and go to http://localhost:3005. Enter a new username and submit.
 Now you're chatting! Enter a message in either tab and make sure it shows up in the
 other tab. Now you can write some styles and make a good looking super simple chat app.
+
+### Edit 05/10/2018 ###
+
+1. Updated the instructions to pull the server code as a package rather than using `npm link`. 
+2. Updated versions and made some fixes as pointed out by GitHub user [wildcart](https://github.com/wildcart) as 
+seen in these [issues](https://github.com/nprice1/typeScriptChatClient/issues/2)
