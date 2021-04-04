@@ -6,6 +6,7 @@ paginate = 5
 copyright = "Copyright (c) 2017 - 2017, Nolan Price; all rights reserved."
 googleAnalytics = "UA-110938320-1"
 disqusShortname = "nolan-blog"
+uglyurls = true
 
   # Theme variables
   [params]
@@ -21,6 +22,7 @@ disqusShortname = "nolan-blog"
     linkedin = "nolan-price-3a630381"
     kaggle = "nprice"
     comments = true
+    useHLJS = true
 
   [[menu.main]]
       name = "Blog"
@@ -29,5 +31,5 @@ disqusShortname = "nolan-blog"
 
   [[menu.main]]
       name = "About"
-      url = "/page/about"
+      url = "/page/about.html"
       weight = 2

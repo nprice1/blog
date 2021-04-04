@@ -472,7 +472,7 @@ function removeWound()
 end
 ```
 
-## Note: Attachments Didnt Work {#attachments}
+## Note: Attachments Didn't Work {#attachments}
 
 I tried using the `addAttachment()` function to make sure the tokens stay attached to the character mat and to avoid the
 annoying locking logic. However, the documentation for the `addAttachment()` function states it destroys the object and
