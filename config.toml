@@ -34,6 +34,8 @@ uglyurls = true
     kaggle = "nprice"
     comments = true
     useHLJS = true
+    readingTime = true
+    showRelatedPosts = true
 
   [[menu.main]]
       name = "Blog"
@@ -44,3 +46,8 @@ uglyurls = true
       name = "About"
       url = "/page/about.html"
       weight = 2
+
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/index.html"
+    weight = 3

@@ -2,6 +2,7 @@
 date = "2017-02-27T14:37:08-08:00"
 title = "Wator Simulation in Haskell"
 draft = false
+tags = ["haskell", "wator"]
 +++
 
 For my first blog post, I'm going back in time. Whoo. This is a project I did for one of my college classes for the explicit purpose of getting used to writing a blog around code, so I thought this would be a good start to this whole writing words instead of code thing. Haskell is one of my favorite languages, and this was my first real project I wrote in it. Buckle up. (In case you want to skip all my college level babbling [click here to see the source code](#full-source))

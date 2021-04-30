@@ -3,6 +3,7 @@ subtitle = "Lights, RF24, Arduino"
 title = "DIY Remote Controlled Lights (Part 1)"
 date = "2021-04-02T10:54:24+02:00"
 draft = false
+tags = ["arduino", "led"]
 +++
 
 I've been in a tinkering mood lately but couldn't settle on a good project. Finally one came to mind that I have been 

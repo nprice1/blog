@@ -3,6 +3,7 @@ subtitle = "Predicting Who Lived and Died on the Titanic"
 title = "Simple Neural Network in Keras"
 date = "2017-04-20T10:54:24+02:00"
 draft = false
+tags = ["ml", "machine learning"]
 +++
 
 Recently I found [this helpful course](http://course.fast.ai/index.html) to help me learn how to actually start writing some Neural Networks. I understand the theory fairly well, but I wanted to actually write one and play around with it. This course showcases a data science competition website called [Kaggle](https://www.kaggle.com/) that provides a ton of datasets, helpful discussions, and the ability to write/fork some Jupyter notebooks directly on the site. Kaggle provides some tutorial competitions, the first one being a [competition to predict who lived and died on the titanic](https://www.kaggle.com/c/titanic). This is a pretty straight forward problem, and it has a ton of discussion topics and Kernels to get started. You can even check out [my notebook getting a 0.76 score in the competition](https://www.kaggle.com/nprice/titanic/trying-out-keras-0-75598-accuracy) and play around with the code in this article. This problem isn't super well suited for Nerual Networks, but I thought I would try anyways.

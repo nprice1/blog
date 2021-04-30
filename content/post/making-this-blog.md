@@ -3,6 +3,7 @@ date = "2017-03-01T10:54:24+02:00"
 title = "Using Namecheap, Amazon S3, Amazon Route 53, and Hugo"
 subtitle = "How I made this blog"
 draft = false
+tags = ["aws", "s3", "route53", "hugo"]
 +++
 Time for the obligatory "How I made the website you're reading right now I'M SO META" post.
 Turns out this was not a trivial process, particularly all of the DNS stuff that I barely understood

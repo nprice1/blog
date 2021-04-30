@@ -2,6 +2,7 @@
 title = "Elm Chat Client for Typescript Chat Server"
 date = "2017-08-04T10:54:24+02:00"
 draft = false
+tags = ["elm", "websockets"]
 +++
 Since writing the Typescript chat server and client, I delved pretty deep into all of the fancy frontend frameworks and got to know 
 them pretty well. They are fun to work in, but there is so much overhead involved, I started craving more similarity to my backend roots. 

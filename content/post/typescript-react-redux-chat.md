@@ -2,6 +2,7 @@
 title = "TypeScript/React/Redux Chat App Tutorial"
 date = "2017-05-01T10:54:24+02:00"
 draft = false
+tags = ["typescript", "react", "redux", "websockets"]
 +++
 Most of my experience is in writing backend code. I have always worked with (and love)
 typed languages. I am a big fan of verbose programming languages because most of the

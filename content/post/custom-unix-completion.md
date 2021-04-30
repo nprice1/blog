@@ -2,6 +2,7 @@
 title = "Custom Unix Tab Completion Function Zsh"
 date = "2018-03-04T10:54:24+02:00"
 draft = false
+tags = ["unix", "bash"]
 +++
 
 I have been getting super into command line tools recently. I have often been made fun of at work for using git

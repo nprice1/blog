@@ -2,6 +2,7 @@
 title = "Application Monitoring with Docker, Prometheus, and Grafana"
 date = "2018-03-30T10:54:24+02:00"
 draft = false
+tags = ["grafana", "prometheus", "docker"]
 +++
 
 Lately I've been interested in how to setup application monitoring. With Docker, it should be pretty straight forward

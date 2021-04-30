@@ -3,6 +3,7 @@ subtitle = "Experimenting with Kubernetes"
 title = "Pods and Services and Deployments Oh My."
 date = "2019-09-20T10:54:24+02:00"
 draft = false
+tags = ["k8s", "kubernetes", "minikube"]
 +++
 
 I have been getting more and more involved in devopsy stuff. Mostly against my will, but it seems like any 

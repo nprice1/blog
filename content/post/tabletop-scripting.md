@@ -3,6 +3,7 @@ subtitle = "Lua Have Mercy"
 title = "Tabletop Simulator"
 date = "2020-07-16T10:54:24+02:00"
 draft = false
+tags = ["tabletop simulator", "lua"]
 +++
 
 I've been playing a ton of [Tabletop Simulator](https://store.steampowered.com/app/286160/Tabletop_Simulator/) lately 

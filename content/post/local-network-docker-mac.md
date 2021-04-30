@@ -3,6 +3,7 @@ date = "2017-09-12T10:54:24+02:00"
 title = "Using Host Network Docker for Mac"
 subtitle = "Private Repos in Docker"
 draft = false
+tags = ["docker", "networking"]
 +++
 
 I've been using [Docker](https://www.docker.com/) a lot at work lately, and it is pretty awesome. Generally I prefer structure over chaos, which is why 
