@@ -8,18 +8,18 @@ tags = ["haskell", "wator"]
 For my first blog post, I'm going back in time. Whoo. This is a project I did for one of my college classes for the explicit purpose of getting used to writing a blog around code, so I thought this would be a good start to this whole writing words instead of code thing. Haskell is one of my favorite languages, and this was my first real project I wrote in it. Buckle up. (In case you want to skip all my college level babbling [click here to see the source code](#full-source))
 
 This is a simplified [Wa-Tor simulation](https://en.wikipedia.org/wiki/Wa-Tor). In it, there is a world of size _n_ x _n_ populated by either a Fish, a Shark, or it is empty. In the original Wator simulation, algae is also taken into account, but in this implementation it is assumed that algae is ubiquitous, so it is impossible for any fish to starve since they can always find algae to eat. The world is simulated using an array indexed with two integers to represent a 2d world. We need to also randomly populate the world, so we need to utilize random number generators. So, the following imports are required:
-```
+```haskell
 import Data.Array
 import Data.List
 import System.Random
 ```
 Next, we will define the CellState structure which can be a Fish, a Shark, or Empty:
-```
+```haskell
 data CellState = Empty | Shark Int Int Bool | Fish Int Bool
      deriving (Eq, Show)
 ```
 The Shark and Fish states require some extra information. The Integers for the shark represent the time it takes for a shark to starve and the time it takes for a shark to breed respectively. The starve time will decrease at every time step the shark does not eat a fish, and will reset when a shark manages to eat a fish. The breed counter will decrease at every time step. The Int in the fish state represents the time it takes for a fish to breed. The boolean value in the shark and fish both represent whether or not the animal has already moved in this timestep to avoid sharks or fish that move more than one space per time step. Next, we define global variables to define the size of the world, the time for a fish to breed, the time for a shark to breed, and the time for a shark to starve. These are the most important aspects to change to see a different version of the simulation:
-```
+```haskell
 -- Initial Size
 wSize :: Int
 wSize = 50
@@ -37,18 +37,18 @@ sStarve :: Int
 sStarve = 10
 ```
 Now, we need to create a random number generator and a function that gets a random number between 0 and 2 to assign a random state to each cell. First, we define a random number generator that gets a root equal to the size of the world so each time a different size world is made there will be a different set of random numbers:
-```
+```haskell
 -- Initial random number generator
 generator :: StdGen
 generator = mkStdGen wSize
 ```
 Next, we make the function that gets a random number between 0 and 2:
-```
+```haskell
 getRandomInit :: StdGen -> (Int, StdGen)
 getRandomInit gen = randomR (0,2) gen
 ```
 In order to generate a different random number for each cell, we will make a list of random numbers to pass around to the function that initializes the world:
-```
+```haskell
 mkList :: Int -> StdGen -> [Int] -> [Int]
 mkList count gen xs = let (x, g) = getRandomInit gen
                       in
@@ -56,7 +56,7 @@ mkList count gen xs = let (x, g) = getRandomInit gen
                         else mkList (count - 1) g ([x] ++ xs)
 ```
 Finally, we can initialize the world. This function will create an Array of the given size by assigning a State to a list of random numbers using a function that converts a number to a state (defined below). Since Haskell does not allow side-effects, to generate "randomness" I created a getNum function that picks various elements in the list of random numbers:
-```
+```haskell
 -- Make an array of size s with random Sharks, Fish, and Empty cellstates to represent the initial World
 mkWorld :: Int -> Array (Int, Int) CellState
 mkWorld size = array ((0,0), (size-1,size-1)) [ ((i,j), states !! getNum (i,j)) | i <- [0..size-1], j <- [0..size-1] ]
@@ -89,7 +89,7 @@ mkState x
           | otherwise = Shark sStarve sBreed False
 ```
 Now we can create all the logic of the simulation. This function will update the 4 point neighborhood around the given index. In it, we first check if the given cell is Empty. If it is, then nothing changes. If the cell is a fish, then we make sure it hasn't moved already. If it has, then it will breed if possible. Breeding will create a new fish in an adjacent empty cell and will reset the breed time of the fish that bred. If the fish can't breed, then it will move to an empty space if possible. If the given cell is a Shark, then we check if it has already moved. If not, we check to see if the shark has starved. If it has, then we remove the shark from the world. Next, the shark will try to eat. Using the isFish function, we determine if a fish is adjacent to the shark. If there is a nearby fish, the shark will eat it and the starvation time will be reset. If there are no fish, then the shark will try and move to an empty space:
-```
+```haskell
 -- Function to update a single cell
 updateCell :: Array (Int, Int) CellState -> (Int, Int) -> Array (Int, Int) CellState
 updateCell a (x,y) = let north = a ! (mod (x-1+wSize) wSize, y)
@@ -159,14 +159,14 @@ isFish s = case s of
                 Empty            -> False
 ```
 Now we have to apply the updateCell function to all elements in the array. The updateWorld function does just that:
-```
+```haskell
 --Function to update the World
 updateWorld :: Array (Int, Int) CellState -> Int -> Int -> Array (Int, Int) CellState
 updateWorld w width height = let allIndices = [ (i,j) | i <- [0..width-1], j <- [0..height-1] ]
                                in foldl updateCell w allIndices
 ```
 Now we define a function that will update the world a given number of times so we can observe the behavior of the simulation over long periods of time. This function will just recurse the given number of time steps over the updateWorld function, making sure to reset the moved value of each animal between steps (more about that below):
-```
+```haskell
 -- Function to run through x number of time-steps
 timeSteps :: Array (Int, Int) CellState -> Int -> Array (Int, Int) CellState
 timeSteps a count = if (count == 0) then a
@@ -174,7 +174,7 @@ timeSteps a count = if (count == 0) then a
                            where newWorld = updateWorld (resetAll a wSize wSize) wSize wSize
 ```
 After we update the world, we have to make sure that we reset the moved value for all animals so it is possible for them to move on the next iteration. Using a similar structure as the updateCell and updateWorld functions, we define a function that will reset one animal given its coordinates. Then we make a function that will apply the reset function to all elements in the world:
-```
+```haskell
 -- Function to reset the moved value an animal cell
 resetOne :: Array (Int, Int) CellState -> (Int, Int) -> Array (Int, Int) CellState
 resetOne a (x,y) = let cur = a ! (x,y)
@@ -194,9 +194,9 @@ resetOne a (x,y) = let cur = a ! (x,y)
 resetAll :: Array (Int, Int) CellState -> Int -> Int -> Array (Int, Int) CellState
 resetAll a width height = let allIndices = [ (i,j) | i <- [0..width-1], j <- [0..height-1] ]
                             in foldl resetOne a allIndices
-```
+```haskell
 Next, we have to actually print the world to observe the behavior. Again using the same kind of structure, we define a function that prints a given coordinate, and then we create a function that will apply this print function to all elements in the world. The print function prints '.' for Empty, 'F' for Fish, and 'S' for a Shark. For simple code, there is also a function that makes a list of the print actions and the the printWorld function goes through this list and executes all of the IO actions:
-```
+```haskell
 -- Function to print a Cell
 printCell :: Array (Int, Int) CellState -> (Int, Int) -> IO ()
 printCell a (x,y) = let cur = a ! (x,y)
@@ -229,7 +229,7 @@ printWorld (x:xs) = do x
                        printWorld xs
 ```
 Finally, we will create the main function that will print the world after each update interval. First, we make a recursive function that will print the updated world, and then recurse over the updated world. The main function simply initializes the world and prints it, then lets the mainStep function take over and print any number of updates. The number of time steps between prints can be altered by changing the value of the pass to the timeSteps function. The number of times to print out the world can be changed by changing the number passed to the mainStep function:
-```
+```haskell
 -- Recursive function to print out the world at 10 timeStep intervals
 mainStep :: Array (Int, Int) CellState -> Int -> IO ()
 mainStep world count = if (count == 0)
@@ -247,7 +247,7 @@ main = let world = mkWorld wSize
                 mainStep world 100
 ```
 ## Full Source {#full-source}
-```
+```haskell
 module Wator (
 ) where
 
