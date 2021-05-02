@@ -7,6 +7,21 @@ copyright = "Copyright (c) 2017 - 2017, Nolan Price; all rights reserved."
 disqusShortname = "nolan-blog"
 uglyurls = true
 
+[[menu.main]]
+    name = "Blog"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "/page/about.html"
+    weight = 2
+
+[[menu.main]]
+  name = "Tags"
+  url = "/tags.html"
+  weight = 3
+
 [privacy]
   [privacy.googleAnalytics]
     disable = true
@@ -36,18 +51,3 @@ uglyurls = true
     useHLJS = true
     readingTime = true
     showRelatedPosts = true
-
-  [[menu.main]]
-      name = "Blog"
-      url = "/"
-      weight = 1
-
-  [[menu.main]]
-      name = "About"
-      url = "/page/about.html"
-      weight = 2
-
-  [[menu.main]]
-    name = "Tags"
-    url = "/tags/index.html"
-    weight = 3
