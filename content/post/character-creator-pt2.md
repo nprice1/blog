@@ -11,7 +11,7 @@ I found [an awesome sprite sheet collection](https://github.com/makrohn/Universa
 stuff I could use for generating some animated sprites for my generated DnD character I made in 
 [Part 1](/post/character-creator.html). My swagger spec shows that this endpoint will take in a `CharacterInfo`, and based 
 on those choices I can walk the sprite sheet folder and pick the appropriate body, weapons, and armor. Now the tricky part
-is how to easily defined which images to select given some condition in the provided `CharacterInfo`. Since I already have
+is how to easily define which images to select given some condition in the provided `CharacterInfo`. Since I already have
 a fancy `Choice` abstraction, I decided to just extend that a bit.
 
 # AllowedPaths
@@ -47,7 +47,7 @@ torso and arm armor:
 }
 ```
 
-Note: I have a special `{{gender}}` entry in there that I will replace with a randomly selected gender when I actually
+**Note:** I have a special `{{gender}}` entry in there that I will replace with a randomly selected gender when I actually
 create the sprite sheet.
 
 The above JSON will check and see if the equipment of the character contains `Leather`, then it will choose one piece of
@@ -84,7 +84,7 @@ public class AllowedPaths {
 
 # Sprite Subscriber (Flow API)
 
-Now that I have an abstraction for getting all of the paths we need to overlay for the final sprite sheet, it's time for 
+Now that I have an abstraction for getting all of the paths I need to overlay for the final sprite sheet, it's time for 
 some more unnecessary asynchronous calls! For this I'm going to play around with the 
 [Flow API](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html) since I have never used it before. This
 is a pretty terrible use case for this since order is incredibly important, but in my testing it didn't turn out horribly 
@@ -92,7 +92,7 @@ so I just stuck with it. At some point I might add a `layer` concept into the ab
 then merge them all together at the very end.
 
 I'm going to make a simple subscriber that expects to be handed a list of paths that it needs to fetch and overlay. I also
-want it to be able to report when it is done. I could do that by having it utilize a `CompeltableFuture`, but I decided
+want it to be able to report when it is done. I could do that by having it utilize a `CompletableFuture`, but I decided
 instead to use a `CountdownLatch` since I haven't used them much and I know how many times I'm going to run this upfront.
 To initialize my subscriber, I just create an empty image of the size of the final sprite sheet, and save the latch I will
 use to mark when the subscriber has finished:
@@ -272,13 +272,13 @@ private Set<String> evaluateAllowedPaths(AllowedPaths allowedPaths,
 ```
 
 The first loop just explicitly calls out the possible conditions and checks them. Everything within the list provided
-in the condition is valid, so it is an `OR` query, where as if there are multiple conditions, both must be true 
+in the condition is valid, so it is an `OR` query, where as if there are multiple conditions, all must be true 
 (`AND` query). Once I confirm the given condition is satisfied, I can just make a random choice, do my special 
 string replacement to ensure the `gender` is accurate for all choices, and go on my way.
 
 Now I am ready for the meat and potatoes of this work: coordinating the flow. This requires creating an instance of the
 sprite subscriber defined above, as well as a publisher that will call out every time a batch of paths is ready 
-(a new layer). Since I know how possible layers there are, I can just create a countdown latch based on that so the
+(a new layer). Since I know how many possible layers there are, I can just create a countdown latch based on that so the
 subscriber can inform me when it is finished:
 
 ```java

@@ -115,9 +115,10 @@ The first thing I need to do is actually get the character info. My autogenerate
 However, this will be an async call and I want to display something to the user while we wait for the info to be
 returned. To do that, I will use React Hooks.
 
-To utilize the hook, I need to define what data will be controlled by the hook and also get a pointer to the setter function
-that will update that data. I'm going to define a local type called `State` to keep track of everything I need to know for
-the component. Right now, that would just be the character info if I was able to fetch it, or an error if I wasn't:
+To utilize the hook, I need to define what data will be controlled by the hook and also get a pointer to the setter 
+function that will update that data. I'm going to define a local type called `State` to keep track of everything I need to 
+know for the component. Right now, that would just be the character info if I was able to fetch it, or an error if I 
+wasn't:
 
 ```typescript
 type State = {
@@ -206,10 +207,10 @@ return (
 ```
 
 Now what I'm hoping for is that this simple info will render to the left of the screen, while the sprite animation will
-be on the right. So I need to update my `CharacterInfoComponent.css` file to make sure that happens. For this task I'm going
-to use `display: flex` on the parent container to render to two children (the `.character-info` div and the sprite div) 
-inline. I will also use `justify-content: center` to get everything of the edge of the screen, and `align-items: flex-start`
-to keep them aligned properly:
+be on the right. So I need to update my `CharacterInfoComponent.css` file to make sure that happens. For this task I'm 
+going to use `display: flex` on the parent container to render to two children (the `.character-info` div and the sprite 
+div) inline. I will also use `justify-content: center` to get everything of the edge of the screen, and 
+`align-items: flex-start` to keep them aligned properly:
 
 ```css
 .container {
@@ -642,7 +643,8 @@ package, but I want to get to animating.
 ## Create the Component
 
 Now that I have my fancy new `Spritesheet` dependency, I can actually define my `SpriteSheetComponent` by creating a 
-`SpriteSheetComponent.tsx` file in my `./src/components/` directory. First I make the skeleton for the functional component:
+`SpriteSheetComponent.tsx` file in my `./src/components/` directory. First I make the skeleton for the functional 
+component:
 
 ```typescript
 import React from 'react';
@@ -735,7 +737,8 @@ return (
 
 I have my sprite sheet image now, so I can pass it in to the `react-responsive-spritesheet` package to actually render the
 animation. The component defined in the dependency takes a few arguments including the image, the height and width of a
-single frame, the desired fps for the animation, which frame to start the animation, and whether or not to loop. For now I'm just going to render the first animation by changing my final return value in the component:
+single frame, the desired fps for the animation, which frame to start the animation, and whether or not to loop. For now 
+I'm just going to render the first animation by changing my final return value in the component:
 
 ```typescript
 return (
@@ -758,9 +761,9 @@ return (
 This renders a sweet backwards spell animation. Or the character attempting to fly, whichever you prefer. But, this sprite
 sheet offers more. So much more. It provides animations for walking, spell casting, thrusting (giggity), slashing (or 
 dancing if you prefer), shooting, and dying. Not only that, but for most of them it has 4 different angles for the 
-animation. To make sure I fully utilize my sweet sprite sheet, I am going to create an `Animation` abstraction that defines 
-the row for the animation from each of the available angles, the number of frames for the animation, whether it loops, and 
-which angle the animation is currently being viewed from. Here is the definition for all of my animations:
+animation. To make sure I fully utilize my sweet sprite sheet, I am going to create an `Animation` abstraction that 
+defines the row for the animation from each of the available angles, the number of frames for the animation, whether it 
+loops, and which angle the animation is currently being viewed from. Here is the definition for all of my animations:
 
 ```typescript
 type Animation = {
@@ -969,8 +972,8 @@ return (
 ## Rotate
 
 The last thing on the agenda is to provide some buttons to rotate the animation, because why not use everything available
-to me. I'm greedy like that. I first have to define a function that will update the component state to tell the sprite sheet
-it needs to use a new row of the current animation:
+to me. I'm greedy like that. I first have to define a function that will update the component state to tell the sprite 
+sheet it needs to use a new row of the current animation:
 
 ```typescript
 const currentAnimation: Animation | undefined = state?.animation;
