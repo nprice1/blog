@@ -5,7 +5,6 @@ theme = "beautifulhugo"
 paginate = 5
 copyright = "Copyright (c) 2017 - 2017, Nolan Price; all rights reserved."
 disqusShortname = "nolan-blog"
-uglyurls = true
 
 [[menu.main]]
     name = "Blog"
@@ -14,12 +13,12 @@ uglyurls = true
 
 [[menu.main]]
     name = "About"
-    url = "/page/about.html"
+    url = "/page/about/"
     weight = 2
 
 [[menu.main]]
   name = "Tags"
-  url = "/tags.html"
+  url = "/tags/"
   weight = 3
 
 [privacy]
