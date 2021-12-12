@@ -414,7 +414,7 @@ This does the following:
 probably superfluous but whatever.
 1. A `Random` instance I will use to make some choices for the character.
 1. An `ObjectMapper` that I will use to serialize the model objects the API will provide.
-1. An helper interface to grab the API endpoints for each of the resources I care about.
+1. A helper interface to grab the API endpoints for each of the resources I care about.
 
 Now it is time for some helper methods. I am going to be making requests the API and parsing the results, and I want to do
 it asynchronously. To do that, I will define a function that will make an arbitrary call to the API endpoint and use the 
