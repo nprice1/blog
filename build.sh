@@ -20,7 +20,9 @@ copy_file () {
     fi
     cp "$filename" "$pref/index.html"
     echo "Copied $filename to $pref/index.html"
-}   
+}
+
+rm -rf public
 
 # Generate the content
 hugo
@@ -34,3 +36,5 @@ pushd public
         copy_files
     popd
 popd
+
+aws s3 sync public s3://nolanprice.com --delete
