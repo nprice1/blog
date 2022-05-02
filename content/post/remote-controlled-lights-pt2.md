@@ -33,7 +33,7 @@ better than I expected.
 
 ![with battery packs to ensure fit](/img/remote_control_5.jpeg)
 
-Next I needed the switch to turn the remote on and off, so I traced out the width of the switch and cut out a hold for it 
+Next I needed the switch to turn the remote on and off, so I traced out the width of the switch and cut out a hole for it 
 to sit in.
 
 ![traced for switch](/img/remote_control_6.jpeg)
@@ -58,7 +58,7 @@ assembled in all its glory.
 
 You'll notice that fun little blue design in the remote. Well that is what happens when you don't fully secure the router
 bit in your Dremel, so while you are happily cutting away wood and wondering why you are still getting resistance when 
-you are going over a spot you already routed you just keep going and end up with a weird shaped hole. Then you fill it 
+you are going over a spot you already routed and you just keep going and end up with a weird shaped hole. Then you fill it 
 with colorful epoxy and now it is a fun decoration. It even sparkles.
 
 # Receiver 
