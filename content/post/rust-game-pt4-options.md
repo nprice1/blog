@@ -2,7 +2,7 @@
 subtitle = "Options Menu"
 title = "Making A Game in Rust: Part 4"
 date = "2022-12-31T12:54:24+02:00"
-draft = true
+draft = false
 series = ["Making A Game in Rust"]
 tags = ["rust", "game"]
 +++
